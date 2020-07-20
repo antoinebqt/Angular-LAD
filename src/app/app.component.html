@@ -1,0 +1,29 @@
+<link
+  href="https://fonts.googleapis.com/css?family=Cookie|Raleway:light"
+  rel="stylesheet"
+/>
+
+<div class="body">
+  <div class="menu">
+    <div><h1>L AD</h1></div>
+    <div>
+      <input
+        type="file"
+        accept="image/*"
+        title=""
+        (change)="detectFile($event)"
+      />
+    </div>
+    <div>
+      <button class="submit" [disabled]="!fileUploaded" (click)="onSubmit()">
+        Valider
+      </button>
+    </div>
+    <div id="btn"><a routerLink="/tesseract">Tesseract</a></div>
+    <div id="btn"><a routerLink="/calamari">Calamari</a></div>
+    <div id="btn"><a routerLink="/both">Comparateur</a></div>
+  </div>
+  <div class="page">
+    <router-outlet></router-outlet>
+  </div>
+</div>
