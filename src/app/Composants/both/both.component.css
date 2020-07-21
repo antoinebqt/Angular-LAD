@@ -14,34 +14,33 @@ hr {
 
 .container {
   display: flex;
+  flex-direction: row;
 }
 
 .stretch {
   flex: 1 0;
-  margin: 5px;
+  margin: 0px 10px;
 }
 
 p.processtime {
+  font-family: "Raleway";
   color: whitesmoke;
   margin: 0;
   font-size: 1.1em;
   padding: 5px 0px;
 }
 
-.result {
-  min-height: 70px;
+textarea {
+  width: 100%;
+  min-height: 425px;
+  color: rgb(71, 71, 71);
+  font-family: "Raleway";
+  font-size: 1.4em;
+  resize: none;
   border: 2px solid #3eb3c6;
   border-radius: 10px;
   box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5);
   background: rgba(255, 255, 255, 0.5);
-}
-
-p {
-  color: rgb(71, 71, 71);
-  padding: 10px;
-  font-family: "Raleway";
-  font-size: 1.5em;
-  margin: 10px;
 }
 
 .submit {

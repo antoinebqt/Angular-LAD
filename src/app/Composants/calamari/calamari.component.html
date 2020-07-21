@@ -1,15 +1,9 @@
-<body>
-  <h1>Résultat de Calamari</h1>
-  <hr />
-  <div>
-    <button class="submit" (click)="getResult()">Afficher le résultat</button>
-    <p class="processtime" *ngIf="secondes !== 0">
-      Temps de traitement : {{ secondes }} secondes
-    </p>
-  </div>
-  <div class="result">
-    <p>
-      {{ result }}
-    </p>
-  </div>
-</body>
+<h1>Résultat de Calamari</h1>
+<hr />
+<div>
+  <button class="submit" (click)="getResult()">Afficher le résultat</button>
+  <p class="processtime" *ngIf="secondes !== 0">
+    Temps de traitement : {{ secondes }} secondes
+  </p>
+</div>
+<textarea disabled>{{ result }}</textarea>

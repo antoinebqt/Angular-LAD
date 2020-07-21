@@ -9,21 +9,13 @@
     <p class="processtime" *ngIf="secondesOfTesseract !== 0">
       Temps de traitement : {{ secondesOfTesseract }} secondes
     </p>
-    <div class="result">
-      <p>
-        {{ resultOfTesseract }}
-      </p>
-    </div>
+    <textarea disabled>{{ resultOfTesseract }}</textarea>
   </div>
   <div class="stretch">
     <h1>Calamari</h1>
     <p class="processtime" *ngIf="secondesOfCalamari !== 0">
       Temps de traitement : {{ secondesOfCalamari }} secondes
     </p>
-    <div class="result">
-      <p>
-        {{ resultOfCalamari }}
-      </p>
-    </div>
+    <textarea disabled>{{ resultOfCalamari }}</textarea>
   </div>
 </div>
