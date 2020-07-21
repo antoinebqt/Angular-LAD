@@ -4,7 +4,7 @@
 />
 
 <div class="body">
-  <div class="menu">
+  <div class="upload">
     <div><h1>L AD</h1></div>
     <div>
       <input
@@ -19,9 +19,11 @@
         Valider
       </button>
     </div>
-    <div id="btn"><a routerLink="/tesseract">Tesseract</a></div>
-    <div id="btn"><a routerLink="/calamari">Calamari</a></div>
-    <div id="btn"><a routerLink="/both">Comparateur</a></div>
+  </div>
+  <div class="choice">
+    <div id="btn" routerLink="/tesseract">Tesseract</div>
+    <div id="btn" routerLink="/calamari">Calamari</div>
+    <div id="btn" routerLink="/both">Comparateur</div>
   </div>
   <div class="page">
     <router-outlet></router-outlet>

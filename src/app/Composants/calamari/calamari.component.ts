@@ -8,6 +8,7 @@ import { ResultatsService } from '../../Services/resultats.service';
 })
 export class CalamariComponent implements OnInit {
   result: string;
+  secondes: number = 0;
 
   constructor(private resultatsService: ResultatsService) {}
 
@@ -15,5 +16,6 @@ export class CalamariComponent implements OnInit {
 
   getResult() {
     this.result = this.resultatsService.calamariResult;
+    this.secondes = this.resultatsService.calamariProcessTime;
   }
 }

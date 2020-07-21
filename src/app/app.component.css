@@ -4,15 +4,23 @@
   left: 0;
   right: 0;
   background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
-  background-attachment: scroll;
+  background-attachment: fixed;
 }
 
-.menu {
+.upload {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+.choice {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .page {
   margin: 25px;
 }
@@ -42,10 +50,10 @@ h1 {
   transition: 0.6s;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
+  outline: none;
 }
 
-#btn:hover,
-#btn:focus {
+#btn:hover {
   box-shadow: 0 0.5em 0.5em -0.4em #000;
   transform: translateY(-0.2em);
   color: #3eb3c6;
@@ -77,20 +85,4 @@ input[type="file"] {
 .submit[disabled] {
   cursor: not-allowed;
   opacity: 50%;
-}
-
-a {
-  transition: 0.6s;
-  text-decoration: none;
-  color: whitesmoke;
-}
-
-a:visited {
-  text-decoration: none;
-  color: whitesmoke;
-}
-
-a:hover {
-  text-decoration: none;
-  color: #3eb3c6;
 }

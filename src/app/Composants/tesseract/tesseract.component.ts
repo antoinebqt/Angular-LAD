@@ -7,6 +7,7 @@ import { ResultatsService } from '../../Services/resultats.service';
   styleUrls: ['./tesseract.component.css'],
 })
 export class TesseractComponent implements OnInit {
+  secondes: number = 0;
   result: string;
 
   constructor(private resultatsService: ResultatsService) {}
@@ -15,5 +16,6 @@ export class TesseractComponent implements OnInit {
 
   getResult() {
     this.result = this.resultatsService.tesseractResult;
+    this.secondes = this.resultatsService.tesseractProcessTime;
   }
 }

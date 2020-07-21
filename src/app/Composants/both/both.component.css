@@ -21,8 +21,15 @@ hr {
   margin: 5px;
 }
 
+p.processtime {
+  color: whitesmoke;
+  margin: 0;
+  font-size: 1.1em;
+  padding: 5px 0px;
+}
+
 .result {
-  min-height: 326px;
+  min-height: 70px;
   border: 2px solid #3eb3c6;
   border-radius: 10px;
   box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5);

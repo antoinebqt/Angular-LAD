@@ -6,14 +6,20 @@
 <div class="container">
   <div class="stretch">
     <h1>Tesseract</h1>
+    <p class="processtime" *ngIf="secondesOfTesseract !== 0">
+      Temps de traitement : {{ secondesOfTesseract }} secondes
+    </p>
     <div class="result">
       <p>
-        {{ resultOfTesseract}}
+        {{ resultOfTesseract }}
       </p>
     </div>
   </div>
   <div class="stretch">
     <h1>Calamari</h1>
+    <p class="processtime" *ngIf="secondesOfCalamari !== 0">
+      Temps de traitement : {{ secondesOfCalamari }} secondes
+    </p>
     <div class="result">
       <p>
         {{ resultOfCalamari }}

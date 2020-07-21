@@ -13,8 +13,8 @@ hr {
 }
 
 .result {
+  min-height: 70px;
   margin-top: 15px;
-  min-height: 353px;
   display: flex;
   flex-direction: column;
   border: 2px solid #3eb3c6;
@@ -27,8 +27,15 @@ p {
   color: rgb(71, 71, 71);
   padding: 10px;
   font-family: "Raleway";
-  font-size: 1.5rem;
+  font-size: 1.5em;
   margin: 10px;
+}
+
+p.processtime {
+  color: whitesmoke;
+  margin: 0;
+  font-size: 1.1em;
+  padding: 0;
 }
 
 .submit {

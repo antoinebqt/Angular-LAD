@@ -8,7 +8,9 @@ import { ResultatsService } from '../../Services/resultats.service';
 })
 export class BothComponent implements OnInit {
   resultOfTesseract: string;
+  secondesOfTesseract: number = 0;
   resultOfCalamari: string;
+  secondesOfCalamari: number = 0;
 
   constructor(private resultatsService: ResultatsService) {}
 
@@ -16,6 +18,8 @@ export class BothComponent implements OnInit {
 
   getResult() {
     this.resultOfCalamari = this.resultatsService.calamariResult;
+    this.secondesOfCalamari = this.resultatsService.calamariProcessTime;
     this.resultOfTesseract = this.resultatsService.tesseractResult;
+    this.secondesOfTesseract = this.resultatsService.tesseractProcessTime;
   }
 }
