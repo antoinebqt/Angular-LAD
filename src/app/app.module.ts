@@ -9,6 +9,7 @@ import { CalamariComponent } from './Composants/calamari/calamari.component';
 import { ResultatsService } from './Services/resultats.service';
 import { BothComponent } from './Composants/both/both.component';
 import { AccueilComponent } from './Composants/accueil/accueil.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,12 @@ import { AccueilComponent } from './Composants/accueil/accueil.component';
     BothComponent,
     AccueilComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FlexLayoutModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FlexLayoutModule,
+    FontAwesomeModule,
+  ],
   providers: [ResultatsService],
   bootstrap: [AppComponent],
 })

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ResultatsService } from './Services/resultats.service';
+import { faFileUpload } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ import { ResultatsService } from './Services/resultats.service';
 export class AppComponent {
   fileUploaded = false;
   fileName: string;
+  fileUploadIcon = faFileUpload;
 
   constructor(private resultatsService: ResultatsService) {}
 

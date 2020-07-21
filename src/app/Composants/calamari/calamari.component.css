@@ -47,3 +47,7 @@ p.processtime {
   border-radius: 4px;
   outline: none;
 }
+
+.submit:active{
+  opacity:50%;
+}

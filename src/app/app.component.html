@@ -1,18 +1,9 @@
-<link
-  href="https://fonts.googleapis.com/css?family=Cookie|Raleway:light"
-  rel="stylesheet"
-/>
-
 <div class="body">
   <div class="upload">
     <div><h1>L AD</h1></div>
-    <div>
-      <input
-        type="file"
-        accept="image/*"
-        title=""
-        (change)="detectFile($event)"
-      />
+    <div id="box">
+      <fa-icon [icon]="fileUploadIcon"></fa-icon>
+      <input type="file" id="file" accept="image/*" title="" (change)="detectFile($event)"/>
     </div>
     <div>
       <button class="submit" [disabled]="!fileUploaded" (click)="onSubmit()">
@@ -29,3 +20,9 @@
     <router-outlet></router-outlet>
   </div>
 </div>
+
+<!--
+<div>
+  <input type="file" accept="image/*" title="" (change)="detectFile($event)"/>
+</div>
+-->

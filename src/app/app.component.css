@@ -59,7 +59,11 @@ h1 {
   color: #3eb3c6;
 }
 
-input,
+#btn:active {
+  border: 2px solid #3eb3c6;
+  transition: 0s;
+}
+
 button {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -70,10 +74,6 @@ button {
   outline: none;
 }
 
-input[type="file"] {
-  padding: 5px;
-}
-
 .submit {
   font-family: "Raleway";
   font-weight: bold;
@@ -82,7 +82,47 @@ input[type="file"] {
   padding: 5px 20px;
 }
 
+.submit:active {
+  opacity: 50%;
+  transition: 0s;
+}
+
 .submit[disabled] {
   cursor: not-allowed;
   opacity: 50%;
+}
+
+fa-icon {
+  color: whitesmoke;
+  font-size: 3em;
+}
+
+fa-icon:hover {
+  color: rgb(240, 240, 240);
+  transform: scale(1.1);
+}
+
+#box {
+  width: 50px;
+  transition: 0.2s;
+  height: 50px;
+}
+
+#box:hover {
+  color: rgb(240, 240, 240);
+  transform: scale(1.1);
+}
+
+#box:active {
+  opacity: 50%;
+  transition: 0s;
+}
+
+#file {
+  height: 50px;
+  width: 50px;
+  vertical-align: middle;
+  margin-top: -70px;
+  font-size: 40px;
+  opacity: 0%;
 }
