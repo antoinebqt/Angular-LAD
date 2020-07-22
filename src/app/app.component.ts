@@ -14,9 +14,15 @@ export class AppComponent {
 
   constructor(private resultatsService: ResultatsService) {}
 
-  detectFile(event) {
+  onFileBrowsed(event) {
     this.onUploadFile(event.target.files[0]);
     this.fileName = event.target.files[0].name;
+    alert(this.fileName + ' a bien été browsé');
+  }
+
+  onFileDropped(event) {
+    this.onUploadFile();
+    alert('Le fichier a bien été droppé');
   }
 
   onUploadFile(file: File) {

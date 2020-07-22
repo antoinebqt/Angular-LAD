@@ -10,6 +10,7 @@ import { ResultatsService } from './Services/resultats.service';
 import { BothComponent } from './Composants/both/both.component';
 import { AccueilComponent } from './Composants/accueil/accueil.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DndDirective } from './dnd.directive';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CalamariComponent,
     BothComponent,
     AccueilComponent,
+    DndDirective,
   ],
   imports: [
     BrowserModule,

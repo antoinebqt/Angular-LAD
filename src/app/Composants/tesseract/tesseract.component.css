@@ -14,7 +14,7 @@ hr {
 
 textarea {
   width: 100%;
-  min-height: 467px;
+  min-height: 418px;
   color: rgb(71, 71, 71);
   font-family: "Raleway";
   font-size: 1.4em;
@@ -48,6 +48,6 @@ p.processtime {
   outline: none;
 }
 
-.submit:active{
-  opacity:50%;
+.submit:active {
+  opacity: 50%;
 }
