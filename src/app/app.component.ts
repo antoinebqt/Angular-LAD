@@ -9,23 +9,22 @@ import { faFileUpload } from '@fortawesome/free-solid-svg-icons';
 })
 export class AppComponent {
   fileUploaded = false;
-  fileName: string;
   fileUploadIcon = faFileUpload;
+  files: File[] = [];
 
   constructor(private resultatsService: ResultatsService) {}
 
-  onFileBrowsed(event) {
-    this.onUploadFile(event.target.files[0]);
-    this.fileName = event.target.files[0].name;
-    alert(this.fileName + ' a bien été browsé');
+  fileBrowseHandler(files) {
+    alert("Le fichier a bien été importé")
+    this.onUploadFile(files);
   }
 
-  onFileDropped(event) {
-    this.onUploadFile();
-    alert('Le fichier a bien été droppé');
+  onFileDropped($event) {
+    alert("Le fichier a bien été droppé")
+    this.onUploadFile($event);
   }
 
-  onUploadFile(file: File) {
+  onUploadFile(files: Array<any>) {
     this.fileUploaded = true;
   }
 

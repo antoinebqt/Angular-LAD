@@ -11,6 +11,7 @@ import { BothComponent } from './Composants/both/both.component';
 import { AccueilComponent } from './Composants/accueil/accueil.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DndDirective } from './dnd.directive';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { DndDirective } from './dnd.directive';
     AppRoutingModule,
     FlexLayoutModule,
     FontAwesomeModule,
+    HttpClientModule,
   ],
   providers: [ResultatsService],
   bootstrap: [AppComponent],

@@ -7,15 +7,14 @@ import { ResultatsService } from '../../Services/resultats.service';
   styleUrls: ['./calamari.component.css'],
 })
 export class CalamariComponent implements OnInit {
-  result: string;
+  result: any;
   secondes: number = 0;
 
   constructor(private resultatsService: ResultatsService) {}
 
   ngOnInit(): void {}
 
-  getResult() {
-    this.result = this.resultatsService.calamariResult;
-    this.secondes = this.resultatsService.calamariProcessTime;
+  async getResult(base) {
+    this.result = await this.resultatsService.getResultFromServer(base);
   }
 }
