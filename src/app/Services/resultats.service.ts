@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
-import { CALAMARIRESULT,TESSERACTRESULT,TESSERACTTIME,CALAMARITIME } from '../mock-results';
+import { Result } from '../result.model';
 import { HttpClient } from '@angular/common/http';
-import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ResultatsService {
-  calamariProcessTime: number = 0;
-  tesseractResult: string;
-  tesseractProcessTime: number = 0;
+  showResult = false;
 
-  constructor(private _http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-  getResultFromServer(base: string = "USD"):Promise<any> {
-    return this._http.get('https://jsonplaceholder.typicode.com/users?id=1').toPromise();
+  getResultFromServer() {
+    return this.http.get<Result[]>(
+      'https://jsonplaceholder.typicode.com/posts'
+    );
   }
 }

@@ -15,12 +15,12 @@ export class AppComponent {
   constructor(private resultatsService: ResultatsService) {}
 
   fileBrowseHandler(files) {
-    alert("Le fichier a bien été importé")
+    alert('Le fichier a bien été importé');
     this.onUploadFile(files);
   }
 
   onFileDropped($event) {
-    alert("Le fichier a bien été droppé")
+    alert('Le fichier a bien été droppé');
     this.onUploadFile($event);
   }
 
@@ -29,6 +29,6 @@ export class AppComponent {
   }
 
   onSubmit() {
-    this.resultatsService.getResultFromServer();
+    alert('Upload en cours...');
   }
 }

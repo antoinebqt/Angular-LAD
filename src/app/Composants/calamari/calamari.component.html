@@ -1,9 +1,9 @@
 <h1>Résultat de Calamari</h1>
-<hr />
+<hr/>
 <div>
   <button class="submit" (click)="getResult()">Afficher le résultat</button>
-  <p class="processtime" *ngIf="secondes !== 0">
-    Temps de traitement : {{ secondes }} secondes
+  <p class="processtime" *ngIf="timed">
+    Temps de traitement : {{ result[0].id }} secondes
   </p>
 </div>
-<textarea disabled>Nom : {{ result | json}}</textarea>
+<textarea disabled>{{ result[0].body }}</textarea>

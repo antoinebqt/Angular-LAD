@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ResultatsService } from '../../Services/resultats.service';
+import { Result } from '../../result.model';
 
 @Component({
   selector: 'app-tesseract',
@@ -7,15 +8,17 @@ import { ResultatsService } from '../../Services/resultats.service';
   styleUrls: ['./tesseract.component.css'],
 })
 export class TesseractComponent implements OnInit {
-  secondes: number = 0;
-  result: string;
+  timed = false;
+  result: Result[] = [];
 
   constructor(private resultatsService: ResultatsService) {}
 
   ngOnInit(): void {}
 
   getResult() {
-    this.result = this.resultatsService.tesseractResult;
-    this.secondes = this.resultatsService.tesseractProcessTime;
+    this.resultatsService
+      .getResultFromServer()
+      .subscribe((data) => (this.result = data));
+    this.timed = true;
   }
 }

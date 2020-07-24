@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ResultatsService } from '../../Services/resultats.service';
+import { Result } from '../../result.model';
 
 @Component({
   selector: 'app-calamari',
@@ -7,14 +8,17 @@ import { ResultatsService } from '../../Services/resultats.service';
   styleUrls: ['./calamari.component.css'],
 })
 export class CalamariComponent implements OnInit {
-  result: any;
-  secondes: number = 0;
+  timed = false;
+  result: Result[] = [];
 
   constructor(private resultatsService: ResultatsService) {}
 
   ngOnInit(): void {}
 
-  async getResult(base) {
-    this.result = await this.resultatsService.getResultFromServer(base);
+  getResult() {
+    this.resultatsService
+      .getResultFromServer()
+      .subscribe((data) => (this.result = data));
+    this.timed = true;
   }
 }
