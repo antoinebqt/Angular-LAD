@@ -1,4 +1,7 @@
 <div class="body">
+  <div class="home" routerLink="/accueil">
+    <fa-icon [icon]="homeIcon"></fa-icon>
+  </div>
   <div class="upload">
     <div><h1>L AD</h1></div>
     <div class="box" appDnd (fileDropped)="onFileDropped($event)">

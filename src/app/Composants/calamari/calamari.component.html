@@ -3,7 +3,7 @@
 <div>
   <button class="submit" (click)="getResult()">Afficher le résultat</button>
   <p class="processtime" *ngIf="timed">
-    Temps de traitement : {{ result[0].id }} secondes
+    Temps de traitement : {{ result[0].time }} secondes
   </p>
 </div>
-<textarea disabled>{{ result[0].body }}</textarea>
+<textarea disabled>{{ result[0].text }}</textarea>

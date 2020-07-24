@@ -7,15 +7,15 @@
   <div class="stretch">
     <h1>Tesseract</h1>
     <p class="processtime" *ngIf="timed">
-      Temps de traitement : {{ result[1].id }} secondes
+      Temps de traitement : {{ result[1].time }} secondes
     </p>
-    <textarea disabled>{{ result[1].body }}</textarea>
+    <textarea disabled>{{ result[1].text }}</textarea>
   </div>
   <div class="stretch">
     <h1>Calamari</h1>
     <p class="processtime" *ngIf="timed">
-      Temps de traitement : {{ result[0].id }} secondes
+      Temps de traitement : {{ result[0].time }} secondes
     </p>
-    <textarea disabled>{{ result[0].body }}</textarea>
+    <textarea disabled>{{ result[0].text }}</textarea>
   </div>
 </div>

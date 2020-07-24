@@ -12,7 +12,7 @@ export class ResultatsService {
 
   getResultFromServer() {
     return this.http.get<Result[]>(
-      'https://jsonplaceholder.typicode.com/posts'
+      'http://localhost:3000/process'
     );
   }
 }
