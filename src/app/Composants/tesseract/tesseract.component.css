@@ -19,13 +19,13 @@ textarea {
   font-family: "Raleway";
   font-size: 1.4em;
   resize: none;
+  background: rgba(255, 255, 255, 0.5);
   border: 2px solid #3eb3c6;
   border-radius: 10px;
   box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5);
-  background: rgba(255, 255, 255, 0.5);
 }
 
-p.processtime {
+p.info {
   font-family: "Raleway";
   color: whitesmoke;
   margin: 0;
