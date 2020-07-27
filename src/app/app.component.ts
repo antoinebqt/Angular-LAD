@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ResultatsService } from './Services/resultats.service';
 import { faFileUpload } from '@fortawesome/free-solid-svg-icons';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -12,25 +12,46 @@ export class AppComponent {
   fileUploaded = false;
   fileUploadIcon = faFileUpload;
   homeIcon = faHome;
-  files: File[] = [];
+  selectedFile: File = null;
+  canSubmit = false;
 
-  constructor(private resultatsService: ResultatsService) {}
+  constructor(private http: HttpClient) {}
 
-  fileBrowseHandler(files) {
-    alert('Le fichier a bien été importé');
-    this.onUploadFile(files);
+  fileBrowseHandler(event) {
+    this.selectedFile = <File>event.target.files[0];
+    this.canSubmit = true;
   }
 
-  onFileDropped($event) {
-    alert('Le fichier a bien été droppé');
-    this.onUploadFile($event);
-  }
-
-  onUploadFile(files: Array<any>) {
-    this.fileUploaded = true;
+  onFileDropped(event) {
+    this.selectedFile = event.target.files[0];
+    this.canSubmit = true;
   }
 
   onSubmit() {
-    alert('Upload en cours...');
+    const fd = new FormData();
+    fd.append('image', this.selectedFile, this.selectedFile.name);
+    this.http
+      .post(
+        'http://localhost:3000/upload',
+        {
+          fileName: this.selectedFile.name,
+          file: fd,
+        },
+        {
+          reportProgress: true,
+          observe: 'events',
+        }
+      )
+      .subscribe((event) => {
+        if (event.type === HttpEventType.UploadProgress) {
+          console.log(
+            'Upload Progress: ' +
+              Math.round((event.loaded / event.total) * 100) +
+              '%'
+          );
+        } else if (event.type === HttpEventType.Response) {
+          console.log('Upload terminé');
+        }
+      });
   }
 }
