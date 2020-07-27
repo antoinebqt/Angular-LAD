@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { faFileUpload } from '@fortawesome/free-solid-svg-icons';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
-import { HttpClient, HttpEventType } from '@angular/common/http';
+import { HttpEventType, HttpErrorResponse } from '@angular/common/http';
+import { UploadService } from './Services/upload.service';
+import { of } from 'rxjs';  
+import { catchError, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +12,13 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  fileUploaded = false;
   fileUploadIcon = faFileUpload;
   homeIcon = faHome;
   selectedFile: File = null;
   canSubmit = false;
 
-  constructor(private http: HttpClient) {}
+  @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;files  = [];  
+    constructor(private uploadService: UploadService) { }
 
   fileBrowseHandler(event) {
     this.selectedFile = <File>event.target.files[0];
@@ -27,31 +30,27 @@ export class AppComponent {
     this.canSubmit = true;
   }
 
-  onSubmit() {
-    const fd = new FormData();
-    fd.append('image', this.selectedFile, this.selectedFile.name);
-    this.http
-      .post(
-        'http://localhost:3000/upload',
-        {
-          fileName: this.selectedFile.name,
-          file: fd,
-        },
-        {
-          reportProgress: true,
-          observe: 'events',
-        }
-      )
-      .subscribe((event) => {
-        if (event.type === HttpEventType.UploadProgress) {
-          console.log(
-            'Upload Progress: ' +
-              Math.round((event.loaded / event.total) * 100) +
-              '%'
-          );
-        } else if (event.type === HttpEventType.Response) {
-          console.log('Upload terminé');
-        }
-      });
+  uploadFile(file) {  
+    const formData = new FormData();  
+    formData.append('file', file.data);  
+    file.inProgress = true;  
+    this.uploadService.upload(formData).pipe(  
+      map(event => {  
+        switch (event.type) {  
+          case HttpEventType.UploadProgress:  
+            file.progress = Math.round(event.loaded * 100 / event.total);  
+            break;  
+          case HttpEventType.Response:  
+            return event;  
+        }  
+      }),  
+      catchError((error: HttpErrorResponse) => {  
+        file.inProgress = false;  
+        return of(`${file.data.name} upload failed.`);  
+      })).subscribe((event: any) => {  
+        if (typeof (event) === 'object') {  
+          console.log(event.body);  
+        }  
+      });  
   }
 }
