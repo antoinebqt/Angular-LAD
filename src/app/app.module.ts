@@ -11,7 +11,8 @@ import { BothComponent } from './Composants/both/both.component';
 import { AccueilComponent } from './Composants/accueil/accueil.component';
 
 import { ResultatsService } from './Services/resultats.service';
-import { UploadService } from './Services/upload.service'
+import { UploadService } from './Services/upload.service';
+import { DataService } from './Services/data.service';
 
 import { DndDirective } from './dnd.directive';
 
@@ -30,7 +31,7 @@ import { DndDirective } from './dnd.directive';
     FontAwesomeModule,
     HttpClientModule,
   ],
-  providers: [ResultatsService, UploadService],
+  providers: [ResultatsService, UploadService, DataService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

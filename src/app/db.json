@@ -14,6 +14,26 @@
     }
   ],
   "upload": [
-    
+    {
+      "success": true,
+      "key": "NgOOva5Ot8hZ",
+      "link": "https://file.io/NgOOva5Ot8hZ",
+      "expiry": "14 days",
+      "id": 1
+    },
+    {
+      "success": true,
+      "key": "YH9oPpTolHGY",
+      "link": "https://file.io/YH9oPpTolHGY",
+      "expiry": "14 days",
+      "id": 2
+    },
+    {
+      "success": true,
+      "key": "YiSWXLgwrWIP",
+      "link": "https://file.io/YiSWXLgwrWIP",
+      "expiry": "14 days",
+      "id": 3
+    }
   ]
 }

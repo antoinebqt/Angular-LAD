@@ -1,10 +1,9 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { faFileUpload } from '@fortawesome/free-solid-svg-icons';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 import { UploadService } from './Services/upload.service';
+import { DataService } from './Services/data.service';
 
 @Component({
   selector: 'app-root',
@@ -17,9 +16,17 @@ export class AppComponent {
   fileUploadIcon = faFileUpload;
   homeIcon = faHome;
   canSubmit = false;
-  uploadData:string;
+  uploadData: string;
 
-  constructor(private uploadService: UploadService, private http: HttpClient) {}
+  constructor(
+    private uploadService: UploadService,
+    private http: HttpClient,
+    private dataService: DataService
+  ) {}
+
+  onFileDropped(event) {
+    console.log("Dropzone doesn't work for the moment");
+  }
 
   onClick() {
     this.canSubmit = true;
@@ -30,10 +37,6 @@ export class AppComponent {
         this.files.push({ data: file, inProgress: false, progress: 0 });
       }
     };
-  }
-
-  onFileDropped(event) {
-    console.log("Dropzone doesn't work for the moment");
   }
 
   onSubmit() {
@@ -50,19 +53,18 @@ export class AppComponent {
   uploadFile(file) {
     const formData = new FormData();
     formData.append('file', file.data);
-    this.uploadService
-      .upload(formData)
-      .pipe(
-        catchError((error: HttpErrorResponse) => {
-          file.inProgress = false;
-          return of(`${file.data.name} upload failed.`);
-        })
-      )
-      .subscribe((event: any) => {
-        if (typeof event === 'object') {
-          console.log(event.body);
-          this.uploadData=event.body;
-        }
-      });
+    this.uploadService.upload(formData).subscribe({
+      next: (value: any) => {
+        console.log(value);
+        this.uploadData = value.body;
+      },
+      error: (err) => console.error(err),
+      complete: () => {
+        console.log('Upload done!');
+        this.dataService.upload(this.uploadData).subscribe({
+          complete: () => console.log('Upload data done!'),
+        });
+      },
+    });
   }
 }
