@@ -7,15 +7,16 @@
     <div class="box" appDnd (fileDropped)="onFileDropped($event)">
       <input
         type="file"
-        id="file"
         accept="image/*"
         title=""
-        (change)="fileBrowseHandler($event)"
+        multiple
+        #fileUpload
+        (click)="onClick()"
       />
       <fa-icon [icon]="fileUploadIcon"></fa-icon>
     </div>
     <div>
-      <button class="submit" (click)="onSubmit()" [disabled]="!canSubmit">
+      <button class="submit" [disabled]="!canSubmit" (click)="onSubmit()">
         Valider
       </button>
     </div>
@@ -25,6 +26,7 @@
     <div id="btn" routerLink="/calamari">Calamari</div>
     <div id="btn" routerLink="/both">Comparateur</div>
   </div>
+  {{ uploadData | json}}
   <div class="page">
     <router-outlet></router-outlet>
   </div>

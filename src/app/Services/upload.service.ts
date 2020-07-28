@@ -1,20 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEvent, HttpErrorResponse, HttpEventType } from  '@angular/common/http';  
-import { map } from  'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UploadService {
-  SERVER_URL:string = "https://file.io/"
-
-  constructor(private httpClient: HttpClient) { }
+  SERVER_URL: string = 'https://file.io/';
+  constructor(private httpClient: HttpClient) {}
 
   public upload(formData) {
-
-    return this.httpClient.post<any>(this.SERVER_URL, formData, {  
-        reportProgress: true,  
-        observe: 'events'  
-      });  
+    return this.httpClient.post<any>(this.SERVER_URL, formData, {
+      observe: 'events',
+    });
   }
 }
