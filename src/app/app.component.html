@@ -7,15 +7,16 @@
     <div class="box" appDnd (fileDropped)="onFileDropped($event)">
       <input
         type="file"
-        id="file"
         accept="image/*"
         title=""
-        (change)="fileBrowseHandler($event.target.files)"
+        multiple
+        #fileUpload
+        (click)="onClick()"
       />
       <fa-icon [icon]="fileUploadIcon"></fa-icon>
     </div>
     <div>
-      <button class="submit" [disabled]="!fileUploaded" (click)="onSubmit()">
+      <button class="submit" [disabled]="!canSubmit" (click)="onSubmit()">
         Valider
       </button>
     </div>
