@@ -1,9 +1,9 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { faFileUpload } from '@fortawesome/free-solid-svg-icons';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
-import { HttpClient } from '@angular/common/http';
 import { UploadService } from './Services/upload.service';
-import { DataService } from './Services/data.service';
+import { Data } from './data.model';
+import { DataService } from './Services/data.service'
 
 @Component({
   selector: 'app-root',
@@ -16,16 +16,12 @@ export class AppComponent {
   fileUploadIcon = faFileUpload;
   homeIcon = faHome;
   canSubmit = false;
-  uploadData: string;
+  uploadData: Data;
 
-  constructor(
-    private uploadService: UploadService,
-    private http: HttpClient,
-    private dataService: DataService
-  ) {}
+  constructor(private uploadService: UploadService, private dataService: DataService) {}
 
   onFileDropped(event) {
-    console.log("Dropzone doesn't work for the moment");
+    console.warn("Dropzone doesn't work for the moment");
   }
 
   onClick() {
@@ -34,7 +30,7 @@ export class AppComponent {
     fileUpload.onchange = () => {
       for (let index = 0; index < fileUpload.files.length; index++) {
         const file = fileUpload.files[index];
-        this.files.push({ data: file, inProgress: false, progress: 0 });
+        this.files.push({ data: file });
       }
     };
   }
@@ -51,19 +47,15 @@ export class AppComponent {
   }
 
   uploadFile(file) {
-    const formData = new FormData();
-    formData.append('file', file.data);
-    this.uploadService.upload(formData).subscribe({
+    this.uploadService.upload(file).subscribe({
       next: (value: any) => {
-        console.log(value);
+        console.log(value.body);
         this.uploadData = value.body;
       },
       error: (err) => console.error(err),
       complete: () => {
         console.log('Upload done!');
-        this.dataService.upload(this.uploadData).subscribe({
-          complete: () => console.log('Upload data done!'),
-        });
+        this.dataService.setData(this.uploadData);
       },
     });
   }

@@ -9,7 +9,6 @@
         type="file"
         accept="image/*"
         title=""
-        multiple
         #fileUpload
         (click)="onClick()"
       />
@@ -17,7 +16,7 @@
     </div>
     <div>
       <button class="submit" [disabled]="!canSubmit" (click)="onSubmit()">
-        Valider
+        Upload
       </button>
     </div>
   </div>

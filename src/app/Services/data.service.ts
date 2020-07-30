@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Data } from '../data.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  SERVER_URL: string = 'http://localhost:3000/upload';
-  constructor(private httpClient: HttpClient) {}
+  constructor() {}
+  data: Data;
 
-  public upload(uploadData) {
-    return this.httpClient.post<any>(this.SERVER_URL, uploadData, {
-      observe: 'events',
-    });
+  setData(uploadData) {
+    this.data = uploadData;
+    console.log("Data uploaded!")
+  }
+
+  getDataId(){
+    return this.data.id;
   }
 }
